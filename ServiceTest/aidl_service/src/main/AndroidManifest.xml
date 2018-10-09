@@ -21,5 +21,12 @@
                 <action android:name="com.xyp.AidlService"/>
             </intent-filter>
         </service>
+        <!--exported设置为接收其他进程的广播-->
+        <receiver android:name="com.halove.xyp.aidl_service.MyReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xyp.broadcast"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

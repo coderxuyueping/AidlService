@@ -12,6 +12,8 @@ import android.util.Log
 import android.view.View
 import com.halove.xyp.commonaidllib.IMyAidlInterface
 import com.halove.xyp.commonaidllib.RemoteCallback
+import com.halove.xyp.commonaidllib.bean.Name
+import com.halove.xyp.commonaidllib.bean.Type
 import com.halove.xyp.commonaidllib.bean.User
 
 
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addUser(v: View){
-        iMyAidlInterface?.addUser(User("xudaha"))
+        iMyAidlInterface?.addUser(User("xudaha", Name("name"), Type.BLUE))
     }
 
     fun getUser(v: View){
@@ -62,6 +64,26 @@ class MainActivity : AppCompatActivity() {
 
     fun unRegisterCallback(v: View){
         iMyAidlInterface?.unRegisterCallback()
+    }
+
+    fun setType1(v: View){
+        iMyAidlInterface?.type = Type.BLUE
+    }
+
+    fun getType1(v: View){
+        val type = iMyAidlInterface?.type
+        Log.d("xuyueping", type?.name)
+    }
+
+    //跨进程广播
+    fun sendBroadcast(v: View){
+        val intent = Intent()
+        intent.action = "com.xyp.broadcast"
+        //包含停止运行的app
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+        intent.component = ComponentName("com.halove.xyp.aidl_service","com.halove.xyp.aidl_service.MyReceiver")
+        sendBroadcast(intent)
+//        startActivity(Intent(this, EmptyActivity::class.java))
     }
 
 

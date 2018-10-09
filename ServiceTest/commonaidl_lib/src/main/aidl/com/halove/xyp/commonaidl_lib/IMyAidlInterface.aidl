@@ -1,11 +1,9 @@
 // IMyAidlInterface.aidl
-package com.halove.xyp.commonaidllib;
+package com.halove.xyp.commonaidl_lib;
 
 // Declare any non-default types here with import statements
 
-import com.halove.xyp.commonaidllib.bean.User;
-import com.halove.xyp.commonaidllib.bean.Type;
-import com.halove.xyp.commonaidllib.RemoteCallback;
+import com.halove.xyp.commonaidl_lib.User;
 
 interface IMyAidlInterface {
     /**
@@ -17,21 +15,9 @@ interface IMyAidlInterface {
 
     /**
     *非基本数据类型传输
-    * client调用service
     *
     */
     void addUser(in User user);
 
     List<User> getUsers();
-
-
-    /**
-    *service 调用 client
-    *
-    */
-    void registerCallback(in RemoteCallback callback);
-    void unRegisterCallback();
-
-    void setType(in Type type);
-    Type getType();
 }

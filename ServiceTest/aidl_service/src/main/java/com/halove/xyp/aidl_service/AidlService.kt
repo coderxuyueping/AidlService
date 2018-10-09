@@ -6,6 +6,7 @@ import android.os.IBinder
 import android.util.Log
 import com.halove.xyp.commonaidllib.RemoteCallback
 import com.halove.xyp.commonaidllib.IMyAidlInterface
+import com.halove.xyp.commonaidllib.bean.Type
 import com.halove.xyp.commonaidllib.bean.User
 
 
@@ -15,6 +16,8 @@ import com.halove.xyp.commonaidllib.bean.User
 class AidlService : Service() {
     val userList by lazy { mutableListOf<User>() }
 
+    var type1: Type? =  null
+
     var remoteCallback: RemoteCallback? = null
 
     override fun onBind(p0: Intent?): IBinder {
@@ -22,6 +25,14 @@ class AidlService : Service() {
     }
 
     private val myBinder = object : IMyAidlInterface.Stub(){
+        override fun setType(type: Type?) {
+            type1 = type!!
+        }
+
+        override fun getType(): Type {
+            return type1!!
+        }
+
         /**
          * service 调用 client
          *

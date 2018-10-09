@@ -1,23 +1,17 @@
-package com.halove.xyp.commonaidllib.bean
+package com.halove.xyp.commonaidl_lib
 
 import android.os.Parcel
 import android.os.Parcelable
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 /**
  * Created by xyp on 2018/9/25.
  */
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-data class User(var name: String, var nameBean: Name, var enum: Type) : Parcelable {
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readParcelable(Name::class.java.classLoader),
-            parcel.readParcelable(Type::class.java.classLoader)) {
-    }
+class User(var name: String) : Parcelable {
+    constructor(parcel: Parcel) : this(parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeParcelable(nameBean, flags)
-        parcel.writeParcelable(enum, flags)
     }
 
     override fun describeContents(): Int {
@@ -33,5 +27,4 @@ data class User(var name: String, var nameBean: Name, var enum: Type) : Parcelab
             return arrayOfNulls(size)
         }
     }
-
 }

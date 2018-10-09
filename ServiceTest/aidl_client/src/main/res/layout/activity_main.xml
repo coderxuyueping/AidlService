@@ -27,6 +27,18 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="setType"
+        android:onClick="setType1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="getType"
+        android:onClick="getType1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="registerCallback"
         android:onClick="registerCallback"/>
 
@@ -35,4 +47,10 @@
         android:layout_height="wrap_content"
         android:text="unRegisterCallback"
         android:onClick="unRegisterCallback"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sendBroadcast"
+        android:onClick="sendBroadcast"/>
 </LinearLayout>
